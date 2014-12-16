@@ -12,22 +12,37 @@
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="一、尊重学生，治学严谨；亲切自然，精神饱满；备课充分，内容熟悉；为人师表，仪态得体；将教书与育人有机结合\n" />
+            android:textSize="13sp"
+            android:text="一、 注重师生互动，激发学生学习、思考和发言的积极性\n" />
 
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="二、任务明确，进度适宜；内容充实，分量适当；纲目清晰，层次分明；详略得当，重（难）点突出；适当引入学科发展动态和前沿\n" />
+            android:textSize="13sp"
+            android:text="二、注重理论联系实际，并能引入学科发展最新动态\n" />
 
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="三、表述清楚，逻辑性强，理论联系实际；善于启发，师生互动，课堂气氛活跃；课件清晰，可视性强，方法运用得当；教学方法有创新或亮点\n" />
+            android:textSize="13sp"
+            android:text="三、教学逻辑清晰，重难点突出，板书或多媒体课件简约清晰\n" />
 
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="四、学生听课精力集中，思维活跃，纪律良好；教学目标落实，学生理解或掌握教学内容；学生到课率在90%以上。\n" />
+            android:textSize="13sp"
+            android:text="四、作业量适中，能认真批改并及时反馈\n" />
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+             android:textSize="13sp"
+            android:text="五、教学端庄热情，尊重学生，富有感染力或亲和力\n" />
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+             android:textSize="13sp"
+            android:text="六、 教学内容充实，分量得当\n" />
+          
     </LinearLayout>
 
     <LinearLayout
@@ -39,7 +54,7 @@
             android:id="@+id/pingjiao_score"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:hint="请输入分数（在5-25分间）"
+            android:hint="请输入分数（在1-5分间）"
             android:numeric="integer" />
     </LinearLayout>
 
