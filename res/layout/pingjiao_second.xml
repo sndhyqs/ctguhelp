@@ -40,7 +40,7 @@
             android:layout_height="100dp"
             android:layout_margin="10dp"
             android:text="这个老师的优点很多啊，此处省略好的字"
-            android:textSize="10sp" />
+            android:textSize="14sp" />
     </LinearLayout>
 
     <LinearLayout
@@ -60,7 +60,7 @@
             android:layout_height="100dp"
             android:layout_margin="10dp"
             android:text="这个老师没有需要改进的地方！(⊙o⊙)？"
-            android:textSize="10sp" />
+            android:textSize="14sp" />
     </LinearLayout>
 
 </LinearLayout>

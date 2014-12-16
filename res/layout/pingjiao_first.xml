@@ -55,6 +55,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:hint="请输入分数（在1-5分间）"
+            android:text="5"
             android:numeric="integer" />
     </LinearLayout>
 

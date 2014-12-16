@@ -30,9 +30,10 @@ public class BaseHandler extends Handler {
 			Object result = msg.obj;
 			if (result != null) {
 				this.activity.onTaskComplete(taskId, result);
-				Log.i("处理id", String.valueOf(taskId));
+				if (C.debug == true)
+					Log.i("处理id", String.valueOf(taskId));
 				break;
-			}else{
+			} else {
 				activity.onTaskComplete(taskId);
 			}
 			break;

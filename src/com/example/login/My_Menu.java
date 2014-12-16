@@ -57,7 +57,8 @@ public class My_Menu extends BaseUiAuth {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.my_meun);
-		Log.i("当前版本", String.valueOf(getLocalVersionCode(this)));
+		if (C.debug == true)
+			Log.i("当前版本", String.valueOf(getLocalVersionCode(this)));
 		instance = this;
 		get_version_code();
 		init();
@@ -80,9 +81,6 @@ public class My_Menu extends BaseUiAuth {
 		news.setOnClickListener(new OnClick());
 		MainTab main = new MainTab(instance);
 		// main.setMain_tab_unread_2(2);
-		// zhuce.setOnClickListener(new OnClick());
-		// denglu.setOnClickListener(new OnClick());
-		// get_version_code();
 
 	}
 
@@ -90,13 +88,10 @@ public class My_Menu extends BaseUiAuth {
 		if (pd.isShowing()) {
 			pd.dismiss();
 		}
-		String html = (String) message;
 		switch (taskId) {
-
 		case C.task.get_version:
 			String s = (String) message;
 			String[] app = s.split("&");
-			System.out.println(app[1]);
 			test_VersionCode(Integer.valueOf(app[1]));
 			break;
 		}
@@ -162,7 +157,7 @@ public class My_Menu extends BaseUiAuth {
 
 	public void test_VersionCode(int version) {
 		if (version > getLocalVersionCode(this)) {
-			toast("已经有新版了，可以去各大手机助手下载哟！");
+				toast("已经有新版了，可以去各大手机助手下载哟！");
 		}
 	}
 
@@ -176,6 +171,8 @@ public class My_Menu extends BaseUiAuth {
 			e.printStackTrace();
 		}
 		int version = info.versionCode;
+		if (C.debug == true)
+			Log.i("My_Menu版本", String.valueOf(version));
 		return version;
 	}
 

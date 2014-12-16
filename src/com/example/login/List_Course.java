@@ -1,15 +1,11 @@
 package com.example.login;
 
-import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
-import java.util.TreeMap;
+import java.util.Map;
 
 import org.apache.http.Header;
 import org.jsoup.select.Elements;
@@ -18,15 +14,12 @@ import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Message;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.ProgressBar;
@@ -39,9 +32,9 @@ import com.ctgu.base.BaseTask;
 import com.ctgu.base.C;
 import com.ctgu.ctguhelp.R;
 import com.ctgu.model.Course;
-import com.ctgu.model.Course1;
 import com.ctgu.util.AsyncHttp;
 import com.ctgu.util.IO;
+import com.ctgu.util.Json;
 import com.ctgu.util.XmlToString;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -107,7 +100,7 @@ public class List_Course extends BaseActivity {
 			public void onComplete(InputStream paramAnonymousInputStream) {
 				Elements localElements = XmlToString.pingjiao_get_data(IO.inputSreamToString(paramAnonymousInputStream));
 				VIEWSTATE = localElements.get(0).attr("value");
-				EVENTVALIDATION = localElements.get(3).attr("value");
+				EVENTVALIDATION = localElements.get(5).attr("value");
 				sendMessage(0, getId(), localElements);
 			}
 
@@ -271,6 +264,7 @@ public class List_Course extends BaseActivity {
 				}
 				teacherChangeString = teacherChange.getText().toString().trim();
 				teacherGoodString = teacherGood.getText().toString().trim();
+
 				pingjiao_Third();
 			}
 		});
@@ -303,14 +297,17 @@ public class List_Course extends BaseActivity {
 				toast("正在评教中。。。。");
 				new Thread() {
 					int i = 0;
+
 					public void run() {
 						while (EVENTVALIDATION.isEmpty() || VIEWSTATE.isEmpty()) {
 							try {
-								Thread.sleep(1000); i++;
-								if (i > 4) 
+								Thread.sleep(1000);
+								i++;
+								if (i > 4)
 									break;
-							} catch (InterruptedException e) {}
+							} catch (InterruptedException e) {
 							}
+						}
 						if (i > 4) {
 							Message msg = new Message();
 							msg.obj = new String("评教失败，网络不稳定");
@@ -332,27 +329,21 @@ public class List_Course extends BaseActivity {
 						taskArgs.put("GridCourse2$ctl06$userscore", String.valueOf(pingjiao_Course_Score));
 						taskArgs.put("GridCourse2$ctl07$userscore", String.valueOf(pingjiao_Course_Score));
 						taskArgs.put("GridCourse2$ctl08$userscore", String.valueOf(pingjiao_Course_Score));
+						taskArgs.put("GridCourse2$ctl09$userscore", String.valueOf(pingjiao_Course_Score));
 						taskArgs.put("SuitTeach", checkBoxString);
 						taskArgs.put("TeacherChange", teacherChangeString);
 						taskArgs.put("TeacherGood", teacherGoodString);
 						taskArgs.put("btnSave", "·确定·");
-						
-						for (String key : taskArgs.keySet()) {
+						taskPool.addTask(C.task.postCourse, "Stu_Assess/Stu_Assess_Proc.aspx?id=" + pingjiao_Operate_Id, taskArgs, new BaseTask() {
+							public void onComplete(InputStream paramAnonymousInputStream) {
+								post();
+								sendMessage(BaseTask.TASK_COMPLETE, C.task.postCourse, "1");
+							}
 
-						    String value = taskArgs.get(key);
-						    System.out.println("key:"+key+"-----value:"+value);
-
-						}
-//						taskPool.addTask(C.task.postCourse, "Stu_Assess/Stu_Assess_Proc.aspx?id=" + pingjiao_Operate_Id, taskArgs, new BaseTask() {
-//							public void onComplete(InputStream paramAnonymousInputStream) {
-//								post();
-//								sendMessage(BaseTask.TASK_COMPLETE, C.task.postCourse, "1");
-//							}
-//
-//							public void onError(String paramAnonymousString) {
-//								sendMessage(BaseTask.NETWORK_ERROR, C.task.postCourse, null);
-//							}
-//						}, 0);
+							public void onError(String paramAnonymousString) {
+								sendMessage(BaseTask.NETWORK_ERROR, C.task.postCourse, null);
+							}
+						}, 0);
 					}
 				}.start();
 			}
@@ -366,12 +357,18 @@ public class List_Course extends BaseActivity {
 	 */
 	public void post() {
 		RequestParams params = new RequestParams();
-
 		params.put("course", course.getCourse());
 		params.put("teacher", course.getTeacher());
 		params.put("usernumber", user.getUserNumber());
 		params.put("type", "1");
-		params.put("score", String.valueOf(pingjiao_Course_Score));
+		
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("pingjiao_Course_Score", String.valueOf(pingjiao_Course_Score));
+		map.put("SuitTeach", checkBoxString);
+		map.put("TeacherChange", teacherChangeString);
+		map.put("TeacherGood", teacherGoodString);
+		
+		params.put("score", Json.mapTojson(map));
 
 		AsyncHttp.Post(C.api.uploadscore, params, new AsyncHttpResponseHandler() {
 

@@ -45,9 +45,9 @@ public final class C {
 		public static final String getSendTranion = "get_send_Tranion.php";
 		public static final String setTranionReview = "set_tranion_review.php";
 		public static final String getTranionMyMessgae = "get_tranion_my_message.php";
-		public static final String getTranionOneMessage="get_tranion_one_message.php";
-		public static final String uploadscore="uploadScore.php";
-		public static final String postLibraryKey ="post_library_key.php";
+		public static final String getTranionOneMessage = "get_tranion_one_message.php";
+		public static final String uploadscore = "uploadScore.php";
+		public static final String postLibraryKey = "post_library_key.php";
 
 	}
 
@@ -102,4 +102,6 @@ public final class C {
 		public static final String images = base + "/images";
 		public static final String qq = "http://www.ctguhelp.com/ctguhelp/images/";
 	}
+
+	public static boolean debug = false;
 }
