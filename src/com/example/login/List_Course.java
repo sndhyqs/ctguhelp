@@ -1,13 +1,11 @@
 package com.example.login;
 
-import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
-import java.util.TreeMap;
+import java.util.Map;
 
 import org.apache.http.Header;
 import org.jsoup.select.Elements;
@@ -16,15 +14,12 @@ import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Message;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.ProgressBar;
@@ -37,26 +32,35 @@ import com.ctgu.base.BaseTask;
 import com.ctgu.base.C;
 import com.ctgu.ctguhelp.R;
 import com.ctgu.model.Course;
-import com.ctgu.model.Course1;
 import com.ctgu.util.AsyncHttp;
 import com.ctgu.util.IO;
+import com.ctgu.util.Json;
 import com.ctgu.util.XmlToString;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 
+/**
+ * 评教内容列表页面和评教方法
+ * 
+ * @author 晏青山
+ * 
+ */
 public class List_Course extends BaseActivity {
 	private static List_Course instance = null;
-	private String EVENTVALIDATION = "";
-	private String VIEWSTATE = "";
+	private String EVENTVALIDATION = "";// 评教必须提交的参数
+	private String VIEWSTATE = "";// 评教必须提交的参数
 	private Course course;
 	private CourseAdapter courseAdapter;
 	private EditText et_pingjiao_score;
 	private LayoutInflater inflater = null;
 	private ListView lv_score;
 	private boolean pingjiao_Operate;
-	private int pingjiao_Operate_Id;
-	private int pingjiao_Course_Score;
+	private int pingjiao_Operate_Id;// 评教课程的id
+	private int pingjiao_Course_Score;// 评教的分数
 	private BaseHandler bh;
+	private String checkBoxString = "RadioButton2";// 评教中是否推荐这位教师继续教这门课
+	private String teacherChangeString = "";// 老师的优点
+	private String teacherGoodString = "";// 老师需要改进
 
 	@SuppressLint({ "NewApi" })
 	protected void onCreate(Bundle paramBundle) {
@@ -88,12 +92,15 @@ public class List_Course extends BaseActivity {
 		});
 	}
 
+	/**
+	 * 根据ID获取评教页面的内容 设置评教必备的参数 VIEWSTATE EVENTVALIDATION
+	 */
 	private void get_Pingjiao_Operate_Html() {
 		taskPool.addTask(1004, "Stu_Assess/Stu_Assess_Proc.aspx?id=" + this.pingjiao_Operate_Id, new BaseTask() {
 			public void onComplete(InputStream paramAnonymousInputStream) {
 				Elements localElements = XmlToString.pingjiao_get_data(IO.inputSreamToString(paramAnonymousInputStream));
 				VIEWSTATE = localElements.get(0).attr("value");
-				EVENTVALIDATION = localElements.get(3).attr("value");
+				EVENTVALIDATION = localElements.get(5).attr("value");
 				sendMessage(0, getId(), localElements);
 			}
 
@@ -103,9 +110,12 @@ public class List_Course extends BaseActivity {
 		}, 0);
 	}
 
+	/**
+	 * 内容初始化 主要是获取评教的列表页面的内容
+	 */
 	private void init() {
 		instance = this;
-		inflater = LayoutInflater.from(this);
+		inflater = LayoutInflater.from(this);// 为后面的对话框提供参数
 		lv_score = ((ListView) findViewById(R.id.list));
 		bh = new BaseHandler(this);
 		pingjiao_get();
@@ -113,6 +123,9 @@ public class List_Course extends BaseActivity {
 		lv_score.setAdapter(courseAdapter);
 	}
 
+	/**
+	 * 获取评教后的页面是否是否需要刷新
+	 */
 	private void load_pingjiao() {
 		AlertDialog.Builder localBuilder = new AlertDialog.Builder(this);
 		localBuilder.setMessage("是否刷新一下界面");
@@ -126,9 +139,14 @@ public class List_Course extends BaseActivity {
 			public void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt) {
 			}
 		});
+
+		// 显示对话框
 		localBuilder.show();
 	}
 
+	/**
+	 * 评教列表页面的获取
+	 */
 	private void pingjiao_get() {
 		pd.show();
 		taskPool.addTask(C.task.getCourse, "Stu_Assess/Stu_Assess.aspx", new BaseTask() {
@@ -144,6 +162,11 @@ public class List_Course extends BaseActivity {
 		}, 0);
 	}
 
+	/**
+	 * 这个方法主要是因为对话框默认是点了确认就取消了，但是由于用户输入出错是不能够取消的，所以需要设置对话框 可以取消或者不可以取消
+	 * 
+	 * @param paramDialogInterface
+	 */
 	public void dailog_Can_Cancer(DialogInterface paramDialogInterface) {
 		try {
 			Field localField = paramDialogInterface.getClass().getSuperclass().getDeclaredField("mShowing");
@@ -184,7 +207,10 @@ public class List_Course extends BaseActivity {
 
 	}
 
-	protected void pingjiao_First() {
+	/**
+	 * 评教第一步
+	 */
+	private void pingjiao_First() {
 		get_Pingjiao_Operate_Html();
 		View localView = this.inflater.inflate(R.layout.pingjiao_first, null);
 		et_pingjiao_score = ((EditText) localView.findViewById(R.id.pingjiao_score));
@@ -203,10 +229,10 @@ public class List_Course extends BaseActivity {
 					i = 0;
 				}
 				dialg_Can_not_Cancer(paramAnonymousDialogInterface);
-				if ((i >= 5) && (i <= 25)) {
+				if ((i >= 1) && (i <= 5)) {
 					pingjiao_Course_Score = i;
 					dailog_Can_Cancer(paramAnonymousDialogInterface);
-					pingjiao_Third();
+					pingjiaoSecond();
 				} else {
 					toast("请输入正确的分数");
 				}
@@ -220,7 +246,41 @@ public class List_Course extends BaseActivity {
 		localBuilder.show();
 	}
 
-	protected void pingjiao_Third() {
+	/**
+	 * 评教第二步
+	 */
+	private void pingjiaoSecond() {
+		View localView = this.inflater.inflate(R.layout.pingjiao_second, null);
+		AlertDialog.Builder localBuilder = new AlertDialog.Builder(instance);
+		final CheckBox checkBox = (CheckBox) localView.findViewById(R.id.checkBox);
+		final EditText teacherGood = (EditText) localView.findViewById(R.id.teacheGood);
+		final EditText teacherChange = (EditText) localView.findViewById(R.id.teacherChange);
+		localBuilder.setTitle("评教第二步");
+		localBuilder.setView(localView);
+		localBuilder.setPositiveButton("下一步", new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt) {
+				if (checkBox.isChecked()) {
+					checkBoxString = "RadioButton1";
+				}
+				teacherChangeString = teacherChange.getText().toString().trim();
+				teacherGoodString = teacherGood.getText().toString().trim();
+
+				pingjiao_Third();
+			}
+		});
+		localBuilder.setNegativeButton("返回", new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt) {
+				dailog_Can_Cancer(paramAnonymousDialogInterface);
+				pingjiao_First();
+			}
+		});
+		localBuilder.show();
+	}
+
+	/**
+	 * 评教第三步
+	 */
+	private void pingjiao_Third() {
 		View localView = this.inflater.inflate(R.layout.pingjiao_third, null);
 		AlertDialog.Builder localBuilder = new AlertDialog.Builder(instance);
 		ProgressBar progressBar = (ProgressBar) localView.findViewById(R.id.progressBar_pingjiaoOperate);
@@ -228,7 +288,7 @@ public class List_Course extends BaseActivity {
 		TVpingjiao.setText(pingjiao_Course_Score + "分");
 		progressBar.setProgress(pingjiao_Course_Score);
 		localBuilder.setView(localView);
-		localBuilder.setTitle("评教第二步");
+		localBuilder.setTitle("评教第三步");
 		localBuilder.setPositiveButton("确认评教", new OnClickListener() {
 
 			@SuppressLint("NewApi")
@@ -243,12 +303,10 @@ public class List_Course extends BaseActivity {
 							try {
 								Thread.sleep(1000);
 								i++;
-								if (i > 4) {
+								if (i > 4)
 									break;
-								}
 							} catch (InterruptedException e) {
 							}
-
 						}
 						if (i > 4) {
 							Message msg = new Message();
@@ -257,7 +315,7 @@ public class List_Course extends BaseActivity {
 							bh.sendMessage(msg);
 						}
 						operatePost();
-					
+
 					}
 
 					private void operatePost() {
@@ -268,6 +326,13 @@ public class List_Course extends BaseActivity {
 						taskArgs.put("GridCourse2$ctl03$userscore", String.valueOf(pingjiao_Course_Score));
 						taskArgs.put("GridCourse2$ctl04$userscore", String.valueOf(pingjiao_Course_Score));
 						taskArgs.put("GridCourse2$ctl05$userscore", String.valueOf(pingjiao_Course_Score));
+						taskArgs.put("GridCourse2$ctl06$userscore", String.valueOf(pingjiao_Course_Score));
+						taskArgs.put("GridCourse2$ctl07$userscore", String.valueOf(pingjiao_Course_Score));
+						taskArgs.put("GridCourse2$ctl08$userscore", String.valueOf(pingjiao_Course_Score));
+						taskArgs.put("GridCourse2$ctl09$userscore", String.valueOf(pingjiao_Course_Score));
+						taskArgs.put("SuitTeach", checkBoxString);
+						taskArgs.put("TeacherChange", teacherChangeString);
+						taskArgs.put("TeacherGood", teacherGoodString);
 						taskArgs.put("btnSave", "·确定·");
 						taskPool.addTask(C.task.postCourse, "Stu_Assess/Stu_Assess_Proc.aspx?id=" + pingjiao_Operate_Id, taskArgs, new BaseTask() {
 							public void onComplete(InputStream paramAnonymousInputStream) {
@@ -287,14 +352,23 @@ public class List_Course extends BaseActivity {
 
 	}
 
+	/**
+	 * 上传评教结果到自己的服务器
+	 */
 	public void post() {
 		RequestParams params = new RequestParams();
-
 		params.put("course", course.getCourse());
 		params.put("teacher", course.getTeacher());
 		params.put("usernumber", user.getUserNumber());
 		params.put("type", "1");
-		params.put("score", String.valueOf(pingjiao_Course_Score));
+		
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("pingjiao_Course_Score", String.valueOf(pingjiao_Course_Score));
+		map.put("SuitTeach", checkBoxString);
+		map.put("TeacherChange", teacherChangeString);
+		map.put("TeacherGood", teacherGoodString);
+		
+		params.put("score", Json.mapTojson(map));
 
 		AsyncHttp.Post(C.api.uploadscore, params, new AsyncHttpResponseHandler() {
 
@@ -303,14 +377,12 @@ public class List_Course extends BaseActivity {
 				try {
 					String reaponse = new String(responseBody, "utf-8");
 				} catch (UnsupportedEncodingException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
 
 			@Override
 			public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-
 			}
 		});
 	}

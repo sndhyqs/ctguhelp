@@ -21,24 +21,31 @@ import java.util.ArrayList;
 import java.util.List;
 import org.apache.http.NameValuePair;
 
+import com.ctgu.base.C;
+
 import java.util.Set;
 
 public class MyHttp {
 	HttpResponse httpResponse;
 
 	public InputStream Get(HttpClient client, String path) throws Exception {
-		Log.i("myhttp", "httpGET提交开始");
+		if (C.debug == true)
+			Log.i("myhttp", "httpGET提交开始");
+
 		InputStream is = null;
-		 Log.i("提交地址", path);
+		if (C.debug == true)
+			Log.i("提交地址", path);
 		HttpGet httpGet = new HttpGet(path);
 		try {
 			httpResponse = client.execute(httpGet);
-		//	Header[] header = httpResponse.getAllHeaders();
-			//Log.i("myhttp", httpResponse.getStatusLine().getStatusCode());
-			Log.i("myhttp", "httpGET提交中");
+			// Header[] header = httpResponse.getAllHeaders();
+			// Log.i("myhttp", httpResponse.getStatusLine().getStatusCode());
+			if (C.debug == true)
+				Log.i("myhttp", "httpGET提交中");
 			if (httpResponse.getStatusLine().getStatusCode() == 200) {
 				is = httpResponse.getEntity().getContent();
-			 Log.i("myhttp", "httpGET提交成功");
+				if (C.debug == true)
+					Log.i("myhttp", "httpGET提交成功");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -49,10 +56,12 @@ public class MyHttp {
 	}
 
 	public InputStream Post(HttpClient client, String path, Map urlParams) throws Exception {
-		Log.i("myhttp", "httpPOST提交开始");
+		if (C.debug == true)
+			Log.i("myhttp", "httpPOST提交开始");
 		InputStream is = null;
 		HttpPost httpPost = new HttpPost(path);
-		Log.i("提交地址", path);
+		if (C.debug == true)
+			Log.i("提交地址", path);
 		List<NameValuePair> postParams = new ArrayList<NameValuePair>();
 		// get post parameters
 		Iterator it = urlParams.entrySet().iterator();
@@ -68,10 +77,12 @@ public class MyHttp {
 		// send post request
 		try {
 			HttpResponse httpResponse = client.execute(httpPost);
-			Log.i("myhttp返回码", String.valueOf(httpResponse.getStatusLine().getStatusCode()));
+			if (C.debug == true)
+				Log.i("myhttp返回码", String.valueOf(httpResponse.getStatusLine().getStatusCode()));
 			if (httpResponse.getStatusLine().getStatusCode() == 200) {
 				is = httpResponse.getEntity().getContent();
-				Log.i("myhttp", "httpPost提交成功");
+				if (C.debug == true)
+					Log.i("myhttp", "httpPost提交成功");
 				return is;
 			} else {
 				return null;

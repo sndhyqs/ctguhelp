@@ -32,7 +32,8 @@ public class IO {
 		StringBuilder sb = new StringBuilder();
 		String line = null;
 		try {
-			Log.i("IO", "文件读取中");
+			if (C.debug == true)
+				Log.i("IO", "文件读取中");
 			while ((line = br.readLine()) != null) {
 
 				sb.append(line);
@@ -40,7 +41,8 @@ public class IO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		Log.i("IO", "文件读完毕");
+		if (C.debug == true)
+			Log.i("IO", "文件读完毕");
 
 		return sb.toString();
 	}
@@ -48,7 +50,8 @@ public class IO {
 	public static void saveToPackage(Context context, String content, String filename) {
 		try {
 			File file = new File(context.getCacheDir(), filename);
-			Log.i("地址", context.getCacheDir().toString());
+			if (C.debug == true)
+				Log.i("地址", context.getCacheDir().toString());
 			FileOutputStream outStream = new FileOutputStream(file);
 			outStream.write(content.getBytes());
 			outStream.close();
