@@ -60,7 +60,10 @@ public class XmlToString {
 				break;
 			case 7:
 				if (!(l.text().isEmpty() || l.text() == "")) {
-					pingjiaoOperateId = l.toString().substring(l.toString().indexOf("id") + 3, l.toString().indexOf("id") + 9);
+					String s =l.toString();
+					String s1 =s.substring(s.indexOf("id=")+3);
+					 s = s1.substring(0,s1.indexOf("'"));
+					pingjiaoOperateId =s;
 				}
 				courses.add(new Course(course, pingjiaoOperate, pingjiaoOperateId, teacher));
 				course = pingjiaoOperate = pingjiaoOperateId = teacher = "";
