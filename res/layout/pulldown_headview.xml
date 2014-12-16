@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@+id/pulldown_refresh_head" android:layout_width="fill_parent" android:layout_height="60.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:layout_width="200.0dip" android:layout_height="60.0dip" android:layout_centerInParent="true">
+        <RelativeLayout android:layout_width="0.0dip" android:layout_height="60.0dip" android:layout_weight="1.0">
+            <ImageView android:id="@+id/pulldown_arrow" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/pulldown_arrow" android:layout_centerInParent="true" />
+            <ProgressBar android:id="@+id/pulldown_progress_bar" android:visibility="gone" android:layout_width="30.0dip" android:layout_height="30.0dip" android:layout_centerInParent="true" />
+        </RelativeLayout>
+        <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="60.0dip" android:layout_weight="4.0">
+            <TextView android:gravity="bottom|center" android:id="@+id/pulldown_description" android:layout_width="fill_parent" android:layout_height="0.0dip" android:text="@string/pulldown_to_refresh" android:layout_weight="1.0" />
+            <TextView android:gravity="top|center" android:id="@+id/pulldown_updated_at" android:layout_width="fill_parent" android:layout_height="0.0dip" android:text="@string/pulldown_updated_at" android:layout_weight="1.0" />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

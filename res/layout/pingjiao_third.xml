@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="你对老师的印象总体为："
+        android:textColor="@color/head"
+        android:textSize="18.0sp" />
+
+    <TextView
+        android:id="@+id/pingjiao_Course_Score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textColor="@color/red"
+        android:textSize="20.0sp" />
+
+    <ProgressBar
+        android:id="@+id/progressBar_pingjiaoOperate"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:max="25"
+        android:paddingBottom="10.0sp"
+        android:paddingTop="10.0sp" />
+
+    <!-- <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="你对上课情况的印象总体为："
+        android:textColor="@color/head"
+        android:textSize="18.0sp" />
+
+    <TextView
+        android:id="@+id/pingjiao_score_condition"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textColor="@color/red"
+        android:textSize="20.0sp" />
+
+    <ProgressBar
+        android:id="@+id/progressBar_condition"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:max="10"
+        android:paddingBottom="10.0sp"
+        android:paddingTop="20.0sp" /> -->
+
+</LinearLayout>

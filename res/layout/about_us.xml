@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical" >
+
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="45.0dip"
+                android:background="@drawable/xml_title_bg"
+                android:gravity="center_vertical" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="关于我们"
+                    android:textColor="#ffffffff"
+                    android:textSize="20.0sp" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/about_us_view"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="三大小助手"
+                    android:textSize="20.0sp" />
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="      三大小助手是一款三峽大学学生自主研发的android手机软件，主要功能有、学生评教、成绩查询、失物招领信息自主发布、二手交易功能。"
+                    android:textSize="15.0sp" />
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="20.0sp"
+                    android:text="      该版本是这个软件的第三个版本，我们会在以后继续更新该软件。如果你有什么建议或者合作请联系我们（新浪微博：三大小助手，QQ:2357087984）"
+                    android:textSize="15.0sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        
+    </RelativeLayout>
+
+</merge>

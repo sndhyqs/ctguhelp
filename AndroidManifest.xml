@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.ctgu.ctguhelp"
+    android:versionCode="5"
+    android:versionName="2.1.2" >
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="10" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:debuggable="true"
+        android:icon="@drawable/ico"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.example.login.UserLogin"
+            android:label="@string/app_name"
+            android:theme="@style/Anim_style2" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.login.Index"
+            android:label="@string/app_name"
+            android:theme="@style/com.app.demos.theme.login" />
+        <activity
+            android:name="com.example.login.My_Menu"
+            android:label="@string/app_name"
+            android:theme="@style/com.app.demos.theme.login" />
+        <activity
+            android:name="com.example.login.Config"
+            android:label="@string/app_name"
+            android:theme="@style/com.app.demos.theme.login" />
+        <activity
+            android:name="com.example.login.MainTopRightDialog"
+            android:label="@string/app_name"
+            android:theme="@style/MyDialogStyleTop" />
+        <activity
+            android:name="com.example.login.Login"
+            android:label="@string/app_name"
+            android:theme="@style/Anim_style2" />
+        <activity
+            android:name="com.example.login.TranionConView"
+            android:label="@string/app_name"
+            android:theme="@style/Anim_style2" />
+        <activity
+            android:name="com.example.login.List_Score"
+            android:label="@string/app_name"
+            android:theme="@style/Anim_style2" />
+        <activity
+            android:name="com.example.login.TranionRightDialog"
+            android:label="@string/app_name"
+            android:theme="@style/MyDialogStyleTop" />
+        <activity
+            android:name="com.example.login.SendTransactions"
+            android:label="@string/app_name"
+            android:theme="@style/Anim_style2" />
+        <activity
+            android:name="com.example.login.TranionDiscuss"
+            android:label="@string/app_name"
+            android:theme="@style/Anim_style2"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name="com.example.login.TranionReviewEdit"
+            android:label="@string/app_name"
+            android:theme="@style/Anim_style2"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name="com.example.login.LoadImage"
+            android:label="@string/app_name"
+            android:theme="@style/MyDialogStyleTop" />
+        <activity
+            android:name="com.example.login.TranionMyMessage"
+            android:label="@string/app_name"
+            android:theme="@style/Anim_style2" />
+        <activity
+            android:name="com.example.login.List_Course"
+            android:label="@string/app_name"
+            android:theme="@style/Anim_style2" />
+        <activity
+            android:name="com.example.login.Library"
+            android:label="@string/app_name"
+            android:theme="@style/Anim_style2" />
+        <activity
+            android:name="com.example.login.LibraryIndex"
+            android:label="@string/app_name"
+            android:theme="@style/Anim_style2" />
+        <activity
+            android:name="com.example.login.Lost_Find"
+            android:label="@string/app_name"
+            android:theme="@style/Anim_style2" />
+        <activity
+            android:name="com.example.login.MySendMessage"
+            android:label="@string/app_name"
+            android:theme="@style/Anim_style2" />
+        <activity
+            android:name="com.example.login.Message_Board_Test"
+            android:label="@string/app_name"
+            android:theme="@style/com.app.demos.theme.login" />
+        <activity
+            android:name="com.example.login.Message_Board_Edit"
+            android:label="@string/app_name"
+            android:theme="@style/Anim_style2"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name="com.example.login.ConView"
+            android:label="@string/app_name"
+            android:theme="@style/Anim_style2" />
+        <activity
+            android:name="com.example.login.AddTranion"
+            android:label="@string/app_name"
+            android:theme="@style/Anim_style2" />
+        <activity
+            android:name="com.example.login.Discuss"
+            android:label="@string/app_name"
+            android:theme="@style/Anim_style2"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name="com.example.login.MyMessage"
+            android:label="@string/app_name"
+            android:theme="@style/Anim_style2" />
+        <activity
+            android:name="com.example.login.Lost_Find_Edit"
+            android:label="@string/app_name"
+            android:theme="@style/Anim_style2" />
+        <activity
+            android:name="com.example.login.About_Us"
+            android:label="@string/app_name"
+            android:theme="@style/Anim_style2" />
+        <activity
+            android:name="com.example.login.Register"
+            android:label="@string/app_name"
+            android:theme="@style/Anim_style2" />
+        <activity
+            android:name="com.example.login.WMGoods"
+            android:label="@string/app_name"
+            android:theme="@style/Anim_style2" />
+        <activity
+            android:name="com.example.login.ReviewEdit"
+            android:label="@string/app_name"
+            android:theme="@style/Anim_style2"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name="com.example.login.WaiMai"
+            android:label="@string/app_name"
+            android:theme="@style/Anim_style2" />
+        <activity
+            android:name="com.example.login.Transactions"
+            android:label="@string/app_name"
+            android:theme="@style/Anim_style2" />
+        <activity
+            android:name="com.example.login.My_course_table"
+            android:label="@string/app_name"
+            android:theme="@style/com.app.demos.theme.login" />
+        <activity
+            android:name="com.example.login.Exit"
+            android:theme="@style/MyDialogStyle" />
+        <activity
+            android:name="com.example.login.Recreation"
+            android:theme="@style/com.app.demos.theme.login" />
+
+        <service android:name="com.ctgu.serve.MyServe" />
+    </application>
+
+</manifest>

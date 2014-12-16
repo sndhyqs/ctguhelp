@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <include layout="@layout/main_layout" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:id="@+id/title"
+            android:layout_width="fill_parent"
+            android:layout_height="45.0dip"
+            android:background="@color/head"
+            android:gravity="center_vertical" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="课 表"
+                android:textColor="#ffffffff"
+                android:textSize="20.0sp" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="25.0sp"
+            android:layout_below="@+id/title"
+            android:background="@drawable/message_bord_bottom_bg"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/riqi_1"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_weight="1.0"
+                android:background="@color/lightgray"
+                android:text="一"
+                android:textColor="@color/head"
+                android:textSize="15.0sp" />
+
+            <Button
+                android:id="@+id/riqi_2"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_weight="1.0"
+                android:background="@color/lightgray"
+                android:text="二"
+                android:textColor="@color/head"
+                android:textSize="15.0sp" />
+
+            <Button
+                android:id="@+id/riqi_3"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_weight="1.0"
+                android:background="@color/lightgray"
+                android:text="三"
+                android:textColor="@color/head"
+                android:textSize="15.0sp" />
+
+            <Button
+                android:id="@+id/riqi_4"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_weight="1.0"
+                android:background="@color/lightgray"
+                android:text="四"
+                android:textColor="@color/head"
+                android:textSize="15.0sp" />
+
+            <Button
+                android:id="@+id/riqi_5"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_weight="1.0"
+                android:background="@color/lightgray"
+                android:text="五"
+                android:textColor="@color/head"
+                android:textSize="15.0sp" />
+
+            <Button
+                android:id="@+id/riqi_6"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_weight="1.0"
+                android:background="@color/lightgray"
+                android:text="六"
+                android:textColor="@color/head"
+                android:textSize="15.0sp" />
+
+            <Button
+                android:id="@+id/riqi_7"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_weight="1.0"
+                android:background="@color/lightgray"
+                android:text="七"
+                android:textColor="@color/head"
+                android:textSize="15.0sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:orientation="vertical"
+            android:paddingBottom="3.0sp" >
+
+            <ImageView
+                android:id="@+id/iv_bottom_line"
+                android:layout_width="26.0sp"
+                android:layout_height="3.0sp"
+                android:layout_marginLeft="11.0sp"
+                android:src="@color/red" />
+        </LinearLayout>
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/vPager"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1.0"
+            android:flipInterval="30"
+            android:persistentDrawingCache="animation" />
+
+        <include layout="@layout/main_tab" />
+    </LinearLayout>
+
+</merge>

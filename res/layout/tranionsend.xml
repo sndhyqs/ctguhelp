@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <include layout="@layout/main_layout" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:id="@+id/title"
+            android:layout_width="fill_parent"
+            android:layout_height="45.0dip"
+            android:background="@color/head"
+            android:gravity="center_vertical" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="我发的消息（二手交易）"
+                android:textColor="#ffffffff"
+                android:textSize="20.0sp" />
+
+            <ImageButton
+                android:id="@+id/add_button"
+                android:layout_width="27.0sp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/xml_message_edit_press"
+                android:src="@drawable/tranionedit" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/title"
+            android:layout_weight="1.0"
+            android:background="#eee"
+            android:orientation="vertical" >
+
+            <com.ctgu.pulldownlistview.PullDownRefreshView
+                android:id="@+id/pulldown_refreshview"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent" >
+
+                <ListView
+                    android:id="@+id/pulldown_listview"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:dividerHeight="5dp" />
+            </com.ctgu.pulldownlistview.PullDownRefreshView>
+
+            <include
+                layout="@layout/loading_empty_view"
+                android:visibility="gone" />
+
+            <include layout="@layout/loading_prompt_layout" />
+        </RelativeLayout>
+    </LinearLayout>
+
+</merge>

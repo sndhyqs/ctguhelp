@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:id="@+id/title"
+            android:layout_width="fill_parent"
+            android:layout_height="45.0dip"
+            android:background="@drawable/xml_title_bg"
+            android:gravity="center" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="图 书"
+                android:textColor="#ffffffff"
+                android:textSize="20.0sp" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/title"
+            android:layout_margin="8dip"
+            android:layout_weight="1.0"
+            android:orientation="vertical" >
+
+            <ListView
+                android:id="@+id/book"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:divider="@color/background_main"
+                android:dividerHeight="5dp" />
+
+            <include
+                layout="@layout/loading_foot_view"
+                android:visibility="gone" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+</merge>

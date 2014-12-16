@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ImageView
+        android:id="@+id/checkCodeImage"
+        android:layout_width="fill_parent"
+        android:layout_height="30.0sp"
+        android:layout_gravity="center_vertical"
+        android:src="@drawable/checkbg" />
+
+    <EditText android:id="@+id/yanzhengma" android:layout_width="fill_parent" android:layout_height="wrap_content" android:hint="输入验证码" />
+</LinearLayout>

@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <RelativeLayout style="@style/course" >
+
+            <TextView
+                android:id="@+id/one_two"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="第一、二节"
+                android:textColor="@color/tomato" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/one_two"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/one_two_course_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="2.0sp"
+                    android:layout_marginLeft="6.0sp"
+                    android:text="课程名"
+                    android:textColor="@color/green" />
+
+                <TextView
+                    android:id="@+id/one_two_course_place"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/one_two_course_name"
+                    android:layout_centerVertical="true"
+                    android:layout_marginBottom="2.0sp"
+                    android:layout_marginLeft="6.0sp"
+                    android:text="地点"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/one_two_course_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/one_two_course_place"
+                    android:layout_marginBottom="2.0sp"
+                    android:layout_marginLeft="6.0sp"
+                    android:text="时间"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/one_two_course_teacher"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/one_two_course_time"
+                    android:layout_marginBottom="2.0sp"
+                    android:layout_marginLeft="6.0sp"
+                    android:text="老师"
+                    android:textColor="@color/black" />
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <RelativeLayout style="@style/course" >
+
+            <TextView
+                android:id="@+id/three_four"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="第三、四节"
+                android:textColor="@color/tomato" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/three_four"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/three_four_course_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="6.0sp"
+                    android:text="课程名"
+                    android:textColor="@color/green" />
+
+                <TextView
+                    android:id="@+id/three_four_course_place"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/three_four_course_name"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="6.0sp"
+                    android:text="地点"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/three_four_course_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/three_four_course_place"
+                    android:layout_marginLeft="6.0sp"
+                    android:text="时间"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/three_four_course_teacher"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/three_four_course_time"
+                    android:layout_marginLeft="6.0sp"
+                    android:text="老师"
+                    android:textColor="@color/black" />
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <RelativeLayout style="@style/course" >
+
+            <TextView
+                android:id="@+id/five_six"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="第五、六节"
+                android:textColor="@color/tomato" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/five_six"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/five_six_course_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="6.0sp"
+                    android:text="课程名"
+                    android:textColor="@color/green" />
+
+                <TextView
+                    android:id="@+id/five_six_course_place"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/five_six_course_name"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="6.0sp"
+                    android:text="地点"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/five_six_course_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/five_six_course_place"
+                    android:layout_marginLeft="6.0sp"
+                    android:text="时间"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/five_six_course_teacher"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/five_six_course_time"
+                    android:layout_marginLeft="6.0sp"
+                    android:text="老师"
+                    android:textColor="@color/black" />
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <RelativeLayout style="@style/course" >
+
+            <TextView
+                android:id="@+id/seven_eight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="第七、八节"
+                android:textColor="@color/tomato" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/seven_eight"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/seven_eight_course_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="6.0sp"
+                    android:text="课程名"
+                    android:textColor="@color/green" />
+
+                <TextView
+                    android:id="@+id/seven_eight_course_place"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/seven_eight_course_name"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="6.0sp"
+                    android:text="地点"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/seven_eight_course_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/seven_eight_course_place"
+                    android:layout_marginLeft="6.0sp"
+                    android:text="时间"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/seven_eight_course_teacher"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/seven_eight_course_time"
+                    android:layout_marginLeft="6.0sp"
+                    android:text="老师"
+                    android:textColor="@color/black" />
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <RelativeLayout style="@style/course" >
+
+            <TextView
+                android:id="@+id/nine_ten"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="第九、十节"
+                android:textColor="@color/tomato" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/nine_ten"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/nine_ten_course_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="6.0sp"
+                    android:text="课程名"
+                    android:textColor="@color/green" />
+
+                <TextView
+                    android:id="@+id/nine_ten_course_place"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/nine_ten_course_name"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="6.0sp"
+                    android:text="地点"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/nine_ten_course_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/nine_ten_course_place"
+                    android:layout_marginLeft="6.0sp"
+                    android:text="时间"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/nine_ten_course_teacher"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/nine_ten_course_time"
+                    android:layout_marginLeft="6.0sp"
+                    android:text="老师"
+                    android:textColor="@color/black" />
+            </RelativeLayout>
+        </RelativeLayout>
+    </LinearLayout>
+
+</ScrollView>
